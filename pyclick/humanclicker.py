@@ -26,8 +26,3 @@ class HumanClicker():
 
     def click(self):
         pyautogui.click()
-
-
-
-
-

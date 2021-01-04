@@ -6,7 +6,7 @@ class TestHumanCurve(unittest.TestCase):
 
     def test_generateCurve(self):
         fromPoint = (100,100)
-        toPoint = (1000,1000)
+        toPoint = (1000,300)
         hc = HumanCurve(fromPoint, toPoint)
         points = hc.generateCurve(offsetBoundaryX=10, offsetBoundaryY=50,\
             leftBoundary=10, rightBoundary=1000, \
@@ -16,6 +16,8 @@ class TestHumanCurve(unittest.TestCase):
             tween=pytweening.easeOutCubic, \
             targetPoints=100)
 
+        for i, point in enumerate(points):
+            print(f'{{id: {i}, type: "mousemove", timestamp: {round(i * 0.1, 2)}, x: {int(point[0])}, y: {int(point[1])}}},')
         self.assertTrue(len(points) == 100)
         self.assertTrue(points[0] == fromPoint)
         self.assertTrue(points[-1] == toPoint)
